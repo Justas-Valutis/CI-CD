@@ -8,9 +8,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker images
-      run: 
+      run: |
         docker build -t justas/backEndImagee:latest ./backend
-      run: 
         docker build -t justas/frontEndImage:latest ./frontend
 
  
