@@ -1,15 +1,21 @@
-name: Build Docker Images from project
+name: Build Docker images from project
 
 on: [workflow_dispatch]
 
 jobs:
+
   build:
+
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v4
-    - name: Build the Docker images
+    - name: Build the Docker image
+      run: | 
+        docker build -t justas/beimage:latest ./backend
+        docker build -t justas/feimage:latest ./frontend
+    - name: Push images to DockerHub
       run: |
-        docker build -t justas/backEndImagee:latest ./backend
-        docker build -t justas/frontEndImage:latest ./frontend
-
- 
+        docker login -u justas -p ${{ secrets.DOCKERHUBTOKEN }}
+        docker push justas/feimage:latest
+        docker push justas/beimage:latest  
