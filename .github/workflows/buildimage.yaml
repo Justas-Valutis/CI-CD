@@ -1,4 +1,4 @@
-name: Build Docker images from project
+name: Build Docker images from project action
 
 on: [workflow_dispatch]
 
