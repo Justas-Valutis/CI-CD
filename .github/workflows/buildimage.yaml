@@ -12,10 +12,10 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build the Docker image
       run: | 
-        docker build -t justas/beimage:latest ./backend
-        docker build -t justas/feimage:latest ./frontend
+        docker build -t justasvalutis/beimage:latest ./backend
+        docker build -t justasvalutis/feimage:latest ./frontend
     - name: Push images to DockerHub
       run: |
-        docker login -u justas -p ${{ secrets.DOCKERHUBTOKEN }}
-        docker push justas/feimage:latest
-        docker push justas/beimage:latest  
+        docker login -u justasvalutis -p ${{ secrets.DOCKERHUBTOKEN }}
+        docker push justasvalutis/feimage:latest
+        docker push justasvalutis/beimage:latest  
