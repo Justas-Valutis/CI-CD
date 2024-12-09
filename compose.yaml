@@ -1,0 +1,26 @@
+version: '3'
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - MONGODB_URI=mongodb://mongodb:27017/foodsdb
+    depends_on:
+      - mongodb
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8081:80"
+    depends_on:
+      - backend
+
+  mongodb:
+    image: mongo
+    volumes:
+      - dbdata:/data/db
+
+volumes:
+  dbdata:
